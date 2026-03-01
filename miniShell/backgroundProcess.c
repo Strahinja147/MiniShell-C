@@ -31,7 +31,7 @@ bool executeBackgroundProcess(char** args, int brojArgumenata)
         return false;
     }
 
-    if (pid == 0) { /
+    if (pid == 0) { 
         char putDoLoga[PATH_MAX + 128];
         char trenutni[PATH_MAX];
         
