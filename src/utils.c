@@ -100,6 +100,10 @@ bool brojArgumenataValidan(int brojArgumenata, int brojZaProveru)
 
 void postaviRawMod(void)
 {
+    if (!isatty(STDIN_FILENO)) {
+        return; 
+    }
+
     struct termios t;
     tcgetattr(STDIN_FILENO, &t);
     t.c_lflag &= ~(ICANON | ECHO); 
@@ -108,6 +112,10 @@ void postaviRawMod(void)
 
 void postaviNaCannonicMod(void)
 {
+    if (!isatty(STDIN_FILENO)) {
+        return; 
+    }
+
     struct termios t;
     tcgetattr(STDIN_FILENO, &t);
     t.c_lflag |= (ICANON | ECHO); 
