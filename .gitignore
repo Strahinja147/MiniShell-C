@@ -1,0 +1,10 @@
+
+minishell
+bin/
+moj*
+obj/
+*.o
+*.log
+logs/
+!logs/.gitkeep
+.vscode/

@@ -5,6 +5,6 @@
 
 void inicijalizujPutanje(void);
 bool isExternal(char* arg);
-bool executeExternal(char** args, int brojArgumenata);
+bool executeExternal(char** args);
 
 #endif

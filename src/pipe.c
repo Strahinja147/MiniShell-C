@@ -14,7 +14,7 @@ int nadjiIndeksPajpa(char** args) {
     return -1;
 }
 
-bool executePipe(char** args, int brojArgumenata) {
+bool executePipe(char** args) {
     int idx = nadjiIndeksPajpa(args);
     if (idx == -1 || args[idx + 1] == NULL) {
         fprintf(stderr, "Greska: Nepravilna upotreba pajpa.\n");
@@ -41,7 +41,7 @@ bool executePipe(char** args, int brojArgumenata) {
         close(pd[1]); 
 
         if (isBuiltin(args1[0])) executeBuiltin(args1, idx);
-        else executeExternal(args1, idx);
+        else executeExternal(args1);
         exit(1); 
     }
 
@@ -55,7 +55,7 @@ bool executePipe(char** args, int brojArgumenata) {
         while(args2[brojArg2] != NULL) brojArg2++;
 
         if (isBuiltin(args2[0])) executeBuiltin(args2, brojArg2);
-        else executeExternal(args2, brojArg2);
+        else executeExternal(args2);
         exit(1);
     }
 

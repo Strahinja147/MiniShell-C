@@ -1,32 +1,31 @@
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall -Wextra -g -Iinclude
+BIN_DIR = bin
+OBJ_DIR = obj
 
-SHELL_DIR = miniShell
-CMDS_DIR = mojeKomande
-LOGS_DIR = $(SHELL_DIR)/logs
+SHELL_SRC = $(filter-out src/mojeKomande/%, $(wildcard src/*.c))
+SHELL_OBJ = $(SHELL_SRC:src/%.c=$(OBJ_DIR)/%.o)
 
-SHELL_SRCS = $(SHELL_DIR)/shell.c $(SHELL_DIR)/utils.c $(SHELL_DIR)/history.c \
-             $(SHELL_DIR)/builtin.c $(SHELL_DIR)/external.c $(SHELL_DIR)/pipe.c \
-             $(SHELL_DIR)/redirection.c $(SHELL_DIR)/backgroundProcess.c
-SHELL_OUT = $(SHELL_DIR)/shell
+CMD_SRCS = $(wildcard src/mojeKomande/*.c)
+CMD_BINS = $(CMD_SRCS:src/mojeKomande/%.c=$(BIN_DIR)/%)
 
-CMD_SRCS = $(wildcard $(CMDS_DIR)/*.c)
-CMD_OUTS = $(CMD_SRCS:.c=)
-
-all: setup shell commands
+all: setup minishell $(CMD_BINS)
 
 setup:
-	mkdir -p $(LOGS_DIR)
+	@mkdir -p $(OBJ_DIR) $(BIN_DIR) logs
 
-shell:
-	$(CC) $(CFLAGS) $(SHELL_SRCS) -o $(SHELL_OUT)
+minishell: $(SHELL_OBJ)
+	$(CC) $(SHELL_OBJ) -o $@
 
-commands: $(CMD_OUTS)
-
-$(CMDS_DIR)/%: $(CMDS_DIR)/%.c
+$(BIN_DIR)/%: src/mojeKomande/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
+$(OBJ_DIR)/%.o: src/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(SHELL_OUT)
-	rm -f $(CMD_OUTS)
-	rm -rf $(LOGS_DIR)/*.log
+	rm -rf $(OBJ_DIR) $(BIN_DIR) minishell
+	rm -f logs/*.log
+
+.PHONY: all clean setup

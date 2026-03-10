@@ -46,7 +46,7 @@ bool isExternal(char* arg) {
     return false;
 }
 
-bool executeExternal(char** args, int brojArgumenata) {
+bool executeExternal(char** args) {
     char* binarnoIme = NULL;
     int brojKomandi = sizeof(eksterneKomande) / sizeof(MapaKomandi);
 

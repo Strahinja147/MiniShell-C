@@ -37,12 +37,12 @@ KomandaSaJednimArgumentomBuiltin komandeSaJednimArgumentomBuiltin[] = {
 bool isBuiltin(char* arg)
 {
 
-    for(int i = 0; i < sizeof(komandeSaDvaArgumentaBuiltin) / sizeof(KomandaSaDvaArgumentaBuiltin); i++)
+    for(size_t i = 0; i < sizeof(komandeSaDvaArgumentaBuiltin) / sizeof(KomandaSaDvaArgumentaBuiltin); i++)
     {
         if(strcmp(arg, komandeSaDvaArgumentaBuiltin[i].imeKomande) == 0)
             return true;
     }
-    for(int i = 0; i < sizeof(komandeSaJednimArgumentomBuiltin) / sizeof(KomandaSaJednimArgumentomBuiltin); i++)
+    for(size_t i = 0; i < sizeof(komandeSaJednimArgumentomBuiltin) / sizeof(KomandaSaJednimArgumentomBuiltin); i++)
     {
         if(strcmp(arg, komandeSaJednimArgumentomBuiltin[i].imeKomande) == 0)
             return true;
@@ -53,12 +53,12 @@ bool isBuiltin(char* arg)
 
 bool executeBuiltin(char** args, int brojArgumenata)
 {
-    for(int i = 0; i < sizeof(komandeSaDvaArgumentaBuiltin) / sizeof(KomandaSaDvaArgumentaBuiltin); i++)
+    for(size_t i = 0; i < sizeof(komandeSaDvaArgumentaBuiltin) / sizeof(KomandaSaDvaArgumentaBuiltin); i++)
     {
         if(strcmp(args[0], komandeSaDvaArgumentaBuiltin[i].imeKomande) == 0)
             return komandeSaDvaArgumentaBuiltin[i].funkcija(args, brojArgumenata);
     }
-    for(int i = 0; i < sizeof(komandeSaJednimArgumentomBuiltin) / sizeof(KomandaSaJednimArgumentomBuiltin); i++)
+    for(size_t i = 0; i < sizeof(komandeSaJednimArgumentomBuiltin) / sizeof(KomandaSaJednimArgumentomBuiltin); i++)
     {
         if(strcmp(args[0], komandeSaJednimArgumentomBuiltin[i].imeKomande) == 0)
             return komandeSaJednimArgumentomBuiltin[i].funkcija(brojArgumenata);
@@ -166,7 +166,7 @@ bool executeHelp(char** sviArgumenti, int brojArgumenata)
     };
     char* helpKomanda = sviArgumenti[1];
     bool nadjenaKomanda = false;
-    for(int i = 0; i < sizeof(helpPoruke) / sizeof(HelpPoruka); i++)
+    for(size_t i = 0; i < sizeof(helpPoruke) / sizeof(HelpPoruka); i++)
     {
         if(strcmp(helpKomanda, helpPoruke[i].imeKomande) == 0)
         {

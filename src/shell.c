@@ -17,7 +17,7 @@
 #include "pipe.h"
 #include "backgroundProcess.h"
 
-int main(int argc, char* argv[])
+int main()
 {
     inicijalizujIstoriju();
     //signal(SIGCHLD, SIG_IGN);
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
         }
         else if(checkForPipe(args) && !isBackgroundProcess(args, trenutniBrojArgumenata))
         {
-            if(!executePipe(args, trenutniBrojArgumenata))
+            if(!executePipe(args))
             {
                 printf("Pipe nije mogao uspesno da se obavi.\n");
                 continue;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
         }
         else if(checkForRedirect(args) && !isBackgroundProcess(args, trenutniBrojArgumenata))
         {
-            if(!executeRedirect(args, trenutniBrojArgumenata))
+            if(!executeRedirect(args))
             {
                 printf("Redirekcija nije mogla uspesno da se obavi.\n");
                 continue;
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
         }
         else if(isExternal(args[0]) && !isBackgroundProcess(args, trenutniBrojArgumenata))
         {
-            if(!executeExternal(args, trenutniBrojArgumenata))
+            if(!executeExternal(args))
             {
                 printf("%s nije moglo uspesno da se uradi!\n", args[0]);
                 continue;

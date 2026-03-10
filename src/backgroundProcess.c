@@ -51,13 +51,13 @@ bool executeBackgroundProcess(char** args, int brojArgumenata)
         setvbuf(stdout, NULL, _IONBF, 0);
 
         if (checkForPipe(args)) {
-            executePipe(args, brojArgumenata);
+            executePipe(args);
         } else if (checkForRedirect(args)) {
-            executeRedirect(args, brojArgumenata);
+            executeRedirect(args);
         } else if (isBuiltin(args[0])) {
             executeBuiltin(args, brojArgumenata);
         } else {
-            executeExternal(args, brojArgumenata);
+            executeExternal(args);
         }
 
         exit(0);

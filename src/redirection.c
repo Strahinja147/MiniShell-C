@@ -18,7 +18,7 @@ int pronadjiZnakRedirekcije(char** args) {
     return -1;
 }
 
-bool executeRedirect(char** args, int brojArgumenata) {
+bool executeRedirect(char** args) {
     int idx = pronadjiZnakRedirekcije(args);
     if (idx == -1 || args[idx + 1] == NULL) {
         fprintf(stderr, "Greska: Nepravilna upotreba redirekcije.\n");
@@ -68,7 +68,7 @@ bool executeRedirect(char** args, int brojArgumenata) {
     if (isBuiltin(args[0])) {
         uspeh = executeBuiltin(args, idx);
     } else {
-        uspeh = executeExternal(args, idx);
+        uspeh = executeExternal(args);
     }
 
     dup2(originalStdout, STDOUT_FILENO);
