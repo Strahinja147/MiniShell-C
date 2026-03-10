@@ -1,7 +1,5 @@
-
 minishell
 bin/
-/moj*
 obj/
 *.o
 *.log
