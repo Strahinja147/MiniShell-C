@@ -1,0 +1,6 @@
+/home/strale/MiniShell-Projekat> ps | head 3PID      NAZIV PROCESA
+--------------------------
+1        systemd
+
+
+/home/strale/MiniShell-Projekat> exit
