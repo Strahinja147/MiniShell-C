@@ -19,10 +19,10 @@ else
 fi
 
 (echo "ps | head 3"; echo "exit") | ./minishell > output.txt
-if grep -q "/" output.txt; then
+if grep -q "PID      NAZIV PROCESA" output.txt; then
     echo "Test 3 Proso: ps | head 3 Radi"
 else
-    echo "Test 2 nije proso"
+    echo "Test 3 nije proso"
     exit 1
 fi
 

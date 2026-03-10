@@ -28,7 +28,8 @@ void inicijalizujPutanje(void) {
     char trenutni[PATH_MAX];
     if (getcwd(trenutni, sizeof(trenutni)) != NULL) {
         char pomocna[PATH_MAX + 128];
-        snprintf(pomocna, sizeof(pomocna), "%s/../mojeKomande", trenutni);
+        // snprintf(pomocna, sizeof(pomocna), "%s/mojeKomande", trenutni);
+        snprintf(pomocna, sizeof(pomocna), "%s/bin", trenutni);
         
         if (realpath(pomocna, apsolutnaPutanjaDoKomandi) == NULL) {
             strncpy(apsolutnaPutanjaDoKomandi, pomocna, PATH_MAX);

@@ -3,11 +3,11 @@ CFLAGS = -Wall -Wextra -g -Iinclude
 BIN_DIR = bin
 OBJ_DIR = obj
 
-SHELL_SRC = $(filter-out src/mojeKomande/%, $(wildcard src/*.c))
+SHELL_SRC = $(wildcard src/*.c)
 SHELL_OBJ = $(SHELL_SRC:src/%.c=$(OBJ_DIR)/%.o)
 
-CMD_SRCS = $(wildcard src/mojeKomande/*.c)
-CMD_BINS = $(CMD_SRCS:src/mojeKomande/%.c=$(BIN_DIR)/%)
+CMD_SRCS = $(wildcard mojeKomande/*.c)
+CMD_BINS = $(CMD_SRCS:mojeKomande/%.c=$(BIN_DIR)/%)
 
 all: setup minishell $(CMD_BINS)
 
@@ -17,7 +17,7 @@ setup:
 minishell: $(SHELL_OBJ)
 	$(CC) $(SHELL_OBJ) -o $@
 
-$(BIN_DIR)/%: src/mojeKomande/%.c
+$(BIN_DIR)/%: mojeKomande/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
 $(OBJ_DIR)/%.o: src/%.c
