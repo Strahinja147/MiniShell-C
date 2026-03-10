@@ -1,5 +1,5 @@
 # Mini Shell – Unix-like Command Line Interpreter (C, Linux, POSIX)
-
+[![Build and Test](https://github.com/Strahinja147/MiniShell-C/actions/workflows/ci.yml/badge.svg)](https://github.com/Strahinja147/MiniShell-C/actions/workflows/ci.yml)
 ## Overview
 
 Custom Unix-like shell implemented in C using POSIX system calls.  
