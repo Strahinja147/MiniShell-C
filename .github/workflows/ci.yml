@@ -11,3 +11,6 @@ jobs:
 
       - name: Build
         run: make
+
+      - name: Run Tests
+        run: chmod +x tests.sh && ./tests.sh
